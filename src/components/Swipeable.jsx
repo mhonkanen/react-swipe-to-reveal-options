@@ -148,10 +148,8 @@ export default class Swipeable extends Component {
 		return <div {...props}>{this.props.children}</div>;
 	}
 }
-Swipeable.defaultProps = {
-	flickThreshold: 0.6,
-	delta: 10
-};
+
+
 Swipeable.propTypes = {
 	onSwiped: PropTypes.func,
 	onSwipingUp: PropTypes.func,
@@ -164,4 +162,20 @@ Swipeable.propTypes = {
 	onSwipedLeft: PropTypes.func,
 	flickThreshold: PropTypes.number,
 	delta: PropTypes.number
+};
+Swipeable.defaultProps = {
+	flickThreshold: 0.6,
+	delta: 10,
+	onSwiped:()=>{},
+	onSwipingUp:()=>{},
+	onSwipingRight:()=>{},
+	onSwipingLeft:()=>{},
+	onSwipedUp:()=>{},
+	OnSwipedLeft:()=>{},
+	OnSwipedRight:()=>{}
+
+
+
+
+
 };
