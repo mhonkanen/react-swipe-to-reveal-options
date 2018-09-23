@@ -1,0 +1,40 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	background: #bebfbf;
+	color: #0099cc;
+	overflow-x: hidden;
+	font-family: sans-serif;
+}
+#react-content {
+	overflow-x: hidden;
+}
+.stro-content {
+	background: #eeefef;
+	padding-left: 2em;
+	line-height: 65px;
+	border-bottom: 1px solid #aaa;
+}
+.move {
+	color: #fff;
+	background: #3498db;
+}
+.archive {
+	color: #fff;
+	background: #e67e22;
+}
+.trash {
+	color: #fff;
+	background: #c0392b;
+}

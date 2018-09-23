@@ -1,17 +1,8 @@
 import React from 'react';
-import { selectV2 as select, text, boolean } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import SwipeToRevealList from '../src/components/SwipeToRevealList';
-// import '../src/css/style.css';
-import '../src/css/swipe-to-reveal-options.css';
+import { render } from 'react-dom';
 
-
-
-
-
-const component = () => {
-
-  var items = [
+import {SwipeToRevealList,SwipeToRevealOptions,Swipeable,LeftRightButton } from './components';
+var items = [
     {
       leftOptions: [{
         label: 'Trash',
@@ -61,12 +52,35 @@ const component = () => {
       callActionWhenSwipingFarLeft: false
     }
   ];
-      return (
-        <div>
-            
 
-        <SwipeToRevealList items={items}/>
-        </div>
-);}
 
-export default component;
+
+
+const item={leftOptions: [{
+	label: 'Trash',
+	class: 'trash'
+  }],
+  rightOptions: [{
+	label: 'Move',
+	class: 'move',
+  },{
+	label: 'Archive',
+	class: 'archive',
+  }],
+  content: `item `,
+  callActionWhenSwipingFarLeft: true,
+  callActionWhenSwipingFarRight: true
+};
+
+
+
+
+const App = () => (
+
+	<div>
+<SwipeToRevealList items={items}/>
+	</div>
+);
+
+render(<App />, document.getElementById('root'));
+// registerServiceWorker();

@@ -8,7 +8,7 @@ import Swipeable from './Swipeable';
 import SwipeToRevealList from './SwipeToRevealList';
 import SwipeToRevealOptions from './SwipeToRevealOptions';
 import { Button, Welcome } from '@storybook/react/demo';
-import '../src/css/style.css';
+
 import '../src/css/swipe-to-reveal-options.css';
 const knobOptions = {
 	knobs: {

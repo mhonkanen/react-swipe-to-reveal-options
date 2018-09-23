@@ -34,7 +34,7 @@ const component = () => (
     onSwipingLeft={action('onSwipingLeft')}
     onSwipingRight={action('onSwipingRight')}
     onSwipedLeft={action('onSwipingLeft')}
-	onSwipedRight={action('onSwipingRight')}
+	  onSwipedRight={action('onSwipingRight')}
 
 	/>
 );
