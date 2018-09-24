@@ -1,7 +1,15 @@
+$trash-color: #c0392b;
+$undo-color: yellow;
+$white: #fff;
+
+$complete-color: #3498db;
+$archive-color: #e67e22;
+
 body {
-	margin: 0;
-	padding: 0;
+	// margin: 0;
+	// padding: 0;
 	font-family: sans-serif;
+	overflow-x: hidden;
 }
 
 * {
@@ -11,30 +19,27 @@ body {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-body {
-	background: #bebfbf;
-	color: #0099cc;
-	overflow-x: hidden;
-	font-family: sans-serif;
-}
-#react-content {
-	overflow-x: hidden;
-}
+
 .stro-content {
 	background: #eeefef;
 	padding-left: 2em;
 	line-height: 65px;
 	border-bottom: 1px solid #aaa;
 }
-.move {
-	color: #fff;
-	background: #3498db;
+
+#root {
+	overflow-x: hidden;
+}
+
+.complete {
+	color: $white;
+	background: $complete-color;
 }
 .archive {
-	color: #fff;
-	background: #e67e22;
+	color: $white;
+	background: $archive-color;
 }
-.trash {
-	color: #fff;
-	background: #c0392b;
+.undo {
+	color: $white;
+	background: $trash-color;
 }

@@ -5,18 +5,24 @@ export default class SwipeToRevealList extends Component {
 	render() {
 		const { items } = this.props;
 
+		const width = window.outerWidth;
 		return (
 			<div>
-				{items.map(item => (
-					<SwipeToRevealOptions
-						leftOptions={item.leftOptions}
-						rightOptions={item.rightOptions}
-						callActionWhenSwipingFarRight={item.callActionWhenSwipingFarRight}
-						callActionWhenSwipingFarLeft={item.callActionWhenSwipingFarLeft}
-					>
-						{item.content}
-					</SwipeToRevealOptions>
-				))}
+				{items.map((item, index) => {
+					const key = `options-key-${index}`;
+					return (
+						<SwipeToRevealOptions
+							key={key}
+							leftOptions={item.leftOptions}
+							rightOptions={item.rightOptions}
+							callActionWhenSwipingFarRight={item.callActionWhenSwipingFarRight}
+							callActionWhenSwipingFarLeft={item.callActionWhenSwipingFarLeft}
+							actionThreshold={width}
+						>
+							{item.content}
+						</SwipeToRevealOptions>
+					);
+				})}
 			</div>
 		);
 	}
