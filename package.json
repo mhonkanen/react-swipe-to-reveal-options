@@ -2,7 +2,8 @@
   "name": "react-swipe-to-reveal-options2",
   "version": "0.0.2",
   "description": "Simple react.js component for a swipe-to-reveal-option item. Ported from https://github.com/enkidevs/react-swipe-to-reveal-options fro ES6",
-  "main": "react-swipe-to-reveal-options.js",
+  "main": "./src/index.js",
+  
   "peerDependencies": {
     "react": "^16.5.2 || 0.x"
   },
