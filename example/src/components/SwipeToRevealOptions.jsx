@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import Swipeable from './Swipeable';
 import classnames from 'classnames';
 import LeftRightButton from './LeftRightButton';
-import '../css/swipe-to-reveal-options.css';
 
 const translateStyle = (x, measure, y) => {
 	var _y = y || '0';
+
+	var _x = x || 0;
+	if (Number.isNaN(x)) _x = 0;
+	let translate = `translate3d(${_x}${measure},${_y},0)`;
+
 	const result = {
-		transform: 'translate3d(' + x + measure + ', ' + _y + ', 0)',
-		WebkitTransform: 'translate3d(' + x + measure + ', ' + _y + ', 0)'
+		transform: translate,
+		WebkitTransform: translate
 	};
 
 	return result;
@@ -105,8 +109,8 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * swipingHandleStylesAndDelta
-	 * @param {Number} delta 
-	 * @param {String} direction 
+	 * @param {Number} delta
+	 * @param {String} direction
 	 */
 	swipingHandleStylesAndDelta(delta, direction) {
 		if (this.shouldAbort(direction)) {
@@ -121,7 +125,7 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * shouldAbort
-	 * @param {String} direction 
+	 * @param {String} direction
 	 */
 	shouldAbort(direction) {
 		const { transitionBack, showRightButtons, showLeftButtons } = this.state;
@@ -138,7 +142,7 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * shouldTransitionBack
-	 * @param {string} direction 
+	 * @param {string} direction
 	 */
 	shouldTransitionBack(direction) {
 		const { showRightButtons, showLeftButtons } = this.state;
@@ -153,13 +157,14 @@ export default class SwipeToRevealOptions extends Component {
 	swiped() {
 		const { action } = this.state;
 		const { rightOptions, leftOptions, transitionBackTimeout } = this.props;
+
 		switch (action) {
 			case 'rightVisible':
-				this.revealRight();
-				break;
 			case 'leftVisible':
-				this.revealLeft();
+				let direction = /^((?:left|right))/i.exec(action)[0];
+				this.reveal(direction);
 				break;
+
 			case 'leftAction':
 				this.leftClick(leftOptions[0]);
 				break;
@@ -186,7 +191,7 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * shouldCloseOthers
-	 * @param {'left'|'right'} direction 
+	 * @param {'left'|'right'} direction
 	 */
 	shouldCloseOthers(direction) {
 		const { closeOthers } = this.props;
@@ -209,8 +214,8 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * getSpanStyle
-	 * @param {'left'|'right'} side 
-	 * @param {Number} index 
+	 * @param {'left'|'right'} side
+	 * @param {Number} index
 	 */
 	getSpanStyle(side, index) {
 		var width = this.getItemWidth(side);
@@ -251,8 +256,8 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * getStyle
-	 * @param {'left'|'right'} side 
-	 * @param {Number} index 
+	 * @param {'left'|'right'} side
+	 * @param {Number} index
 	 */
 	getStyle(side, index) {
 		const {
@@ -297,7 +302,7 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * getItemWidth
-	 * @param {'left'|'right'} side 
+	 * @param {'left'|'right'} side
 	 */
 	getItemWidth(side) {
 		const { leftOptions, rightOptions, parentWidth, maxItemWidth } = this.props;
@@ -348,32 +353,41 @@ export default class SwipeToRevealOptions extends Component {
 
 	/**
 	 * leftClick
-	 * @param {LeftRightButton} option 
+	 * @param {LeftRightButton} option
 	 */
 	leftClick(option) {
 		const { onLeftClick, transitionBackOnLeftClick } = this.props;
 		onLeftClick(option);
 		if (transitionBackOnLeftClick) this.transitionBack();
 	}
+
 	/**
-	 * revealLeft
+	 * reveal
+	 * @param {'left'|'right'} direction
 	 */
-	revealLeft() {
+	reveal(direction) {
 		const { onReveal } = this.props;
-		onReveal('left');
-		this.setState({ showRightButtons: false, showLeftButtons: true });
+		onReveal(direction);
+
+		this.setState({
+			showRightButtons: direction === 'right',
+			showLeftButtons: direction === 'left'
+		});
 	}
-	revealRight() {
-		const { onReveal } = this.props;
-		onReveal('right');
-		this.setState({ showRightButtons: true, showLeftButtons: false });
-	}
+
+	/**
+	 * rightClick
+	 * @param {LeftRightButton} option
+	 */
 	rightClick(option) {
 		const { onRightClick, transitionBackOnRightClick } = this.props;
 		onRightClick(option);
 		if (transitionBackOnRightClick) this.transitionBack();
 	}
 
+	/**
+	 * render
+	 */
 	render() {
 		const { transitionBack, showRightButtons, showLeftButtons } = this.state;
 		const { className, leftOptions, rightOptions } = this.props;
@@ -383,9 +397,10 @@ export default class SwipeToRevealOptions extends Component {
 			'show-right-buttons': showRightButtons,
 			'show-left-buttons': showLeftButtons
 		});
+		const containerStyle = this.getContainerStyle();
 
 		return (
-			<div className={classes} style={this.getContainerStyle()}>
+			<div className={classes} style={containerStyle}>
 				<div className="stro-left">
 					{leftOptions.map((option, index) => (
 						<LeftRightButton
