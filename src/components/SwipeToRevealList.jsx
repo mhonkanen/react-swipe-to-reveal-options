@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import SwipeToRevealOptions from './SwipeToRevealOptions';
 export default class SwipeToRevealList extends Component {
 	render() {
-		const { items } = this.props;
+		const { items, width } = this.props;
 
-		const width = window.outerWidth;
 		return (
 			<div>
 				{items.map((item, index) => {
@@ -34,6 +33,7 @@ const OptionType = PropTypes.shape({
 });
 
 SwipeToRevealList.propTypes = {
+	width: PropTypes.number.isRequired,
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
 			leftOptions: PropTypes.arrayOf(OptionType),
