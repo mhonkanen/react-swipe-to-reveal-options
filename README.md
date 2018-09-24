@@ -3,6 +3,8 @@
 
 > Simple [React](http://facebook.github.io/react/) component for a swipe-to-reveal-option item.
 
+Ported version from https://github.com/enkidevs/react-swipe-to-reveal-options
+
 ### [Demo](http://enkidevs.github.io/react-swipe-to-reveal-options/)
 
 [![Demo](https://cdn.rawgit.com/enki-com/react-swipe-to-reveal-options/master/example/demo.gif "Demo")](https://github.com/enki-com/react-swipe-to-reveal-options/blob/master/example/index.html)
@@ -10,13 +12,13 @@
 ## Install
 
 ```console
-$ npm install react-swipe-to-reveal-options --save
+$ npm install react-swipe-to-reveal-options2 --save
 ```
 
 or
 
 ```console
-$ bower install react-swipe-to-reveal-options --save
+$ yarn react-swipe-to-reveal-options2
 ```
 
 ## Example
@@ -24,11 +26,10 @@ $ bower install react-swipe-to-reveal-options --save
 Controlled usage:
 
 ```javascript
-var SwipeToRevealOptions = require('react-swipe-to-reveal-options');
+import SwipeToRevealList from 'react-swipe-to-reveal-options2'
 
-var App = React.createClass({
-  render() {
-    var items = [
+const App = ()=>{
+     var items = [
       {
         leftOptions: [{
           label: 'Trash',
@@ -79,29 +80,39 @@ var App = React.createClass({
       }
     ];
     return (
-      <div>
-        items.map(function(item) {
-          return (
-            <SwipeToRevealOptions
-              leftOptions={item.leftOptions}
-              rightOptions={item.rightOptions}
-              callActionWhenSwipingFarRight={item.callActionWhenSwipingFarRight}
-              callActionWhenSwipingFarLeft={item.callActionWhenSwipingFarLeft}
-            >
-              {item.content}
-            </SwipeToRevealOptions>
-          );
-        })
-      </div>
+      <SwipeToRevealList items={items}/>
     );
-  },
-
-});
+} 
 ```
 
 ## API
 
 ### Props
+
+#### SwipeToRevealList
+##### items
+Array of objects defining
+```javascript
+{
+  leftOptions:[
+    {
+      label:String,
+      class:String
+    }
+  ],
+  rightOptions:[
+     {
+      label:String,
+      class:String
+    }
+  ],
+  content:Object,
+  callActionWhenSwipingFarLeft:Boolean,
+  callActionWhenSwipingFarRight:Boolean,
+
+
+}
+```
 
 All props are optional.
 

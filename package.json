@@ -1,10 +1,10 @@
 {
-  "name": "react-swipe-to-reveal-options",
-  "version": "0.3.6",
-  "description": "Simple react.js component for a swipe-to-reveal-option item.",
+  "name": "react-swipe-to-reveal-options2",
+  "version": "0.0.1",
+  "description": "Simple react.js component for a swipe-to-reveal-option item. Ported from https://github.com/enkidevs/react-swipe-to-reveal-options fro ES6",
   "main": "react-swipe-to-reveal-options.js",
   "peerDependencies": {
-    "react": "^15.0.0 || 0.x"
+    "react": "^16.5.2 || 0.x"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enkidevs/react-swipe-to-reveal-options.git"
+    "url": "git+https://github.com/mookiejones/react-swipe-to-reveal-options.git"
   },
   "keywords": [
     "react",
@@ -21,12 +21,12 @@
     "javascript",
     "react-component"
   ],
-  "author": "Mathieu Dutour",
+  "author": "Charles Berman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/enkidevs/react-swipe-to-reveal-options/issues"
+    "url": "https://github.com/mookiejones/react-swipe-to-reveal-options/issues"
   },
-  "homepage": "https://github.com/enkidevs/react-swipe-to-reveal-options",
+  "homepage": "https://github.com/mookiejones/react-swipe-to-reveal-options",
   "directories": {
     "example": "example"
   },
