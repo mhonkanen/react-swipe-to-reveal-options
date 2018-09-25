@@ -2,13 +2,22 @@
   "name": "react-swipe-to-reveal-options2",
   "version": "0.1.2",
   "description": "Simple react.js component for a swipe-to-reveal-option item. Ported from https://github.com/enkidevs/react-swipe-to-reveal-options fro ES6",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "peerDependencies": {
     "react": "^16.5.2 || 0.x"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "npm-run-all  clean lint build:es2015 build:es",
+    "build:shared": "cross-env BABEL_ENV=docs-development babel-node ./packages/shared/src",
+    "build:es2015": "cross-env NODE_ENV=production babel ./src --out-dir ./lib",
+    "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=modules babel ./src/index.jsx --out-file ./build/index.es.js",
+    "build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./lib/es --ignore *.test.js",
+    "clean": "rimraf lib",
+    "release": "npm run-all build release  npm publish build",
+    "lint": "eslint . --cache && echo \"eslint: no lint errors\"",
+    "lint:fix": "eslint . --cache --fix && echo \"eslint: no lint errors\""
   },
   "repository": {
     "type": "git",
@@ -36,12 +45,43 @@
     "react-dom": "^16.5.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/plugin-transform-object-assign": "7.0.0",
+    "@babel/plugin-transform-runtime": "7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "@babel/register": "7.0.0",
+    "@babel/runtime": "^7.0.0",
     "@storybook/addon-actions": "^3.4.11",
     "@storybook/addon-knobs": "^3.4.11",
     "@storybook/addon-links": "^3.4.11",
     "@storybook/addons": "^3.4.11",
     "@storybook/react": "^3.4.11",
     "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0"
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-istanbul": "^5.0.0",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-preval": "^2.0.0",
+    "babel-plugin-react-remove-properties": "^0.2.5",
+    "babel-plugin-transform-dev-warning": "^0.1.0",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-defaults": "^9.0.0",
+    "eslint-import-resolver-webpack": "^0.10.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-mocha": "^5.0.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-spellcheck": "^0.0.10",
+    "npm-run-all": "^4.1.3"
   }
 }
