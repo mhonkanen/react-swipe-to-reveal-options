@@ -15,7 +15,8 @@
     "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=modules babel ./src/index.jsx --out-file ./build/index.es.js",
     "build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./lib/es --ignore *.test.js",
     "clean": "rimraf lib",
-    "release": "npm run-all build npm publish build",
+    "release": "npm run-all build release:pub",
+    "release:pub":"npm publish",
     "lint": "eslint . --cache && echo \"eslint: no lint errors\"",
     "lint:fix": "eslint . --cache --fix && echo \"eslint: no lint errors\""
   },
