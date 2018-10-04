@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 
-import '../css/swipe-to-reveal-options.css';
+import '../../css/swipe-to-reveal-options.css';
 
 export default class Swipeable extends Component {
 	constructor(props) {
