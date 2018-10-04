@@ -7,6 +7,7 @@ export default class LeftRightButton extends Component {
 
 		const propsLabel = { style: getSpanStyle(side, index) };
 		const labelType = typeof option.label;
+		console.log(`labelType: ${labelType}`);
 		if (labelType === 'string') {
 			propsLabel.dangerouslySetInnerHTML = {
 				___html: option.label
