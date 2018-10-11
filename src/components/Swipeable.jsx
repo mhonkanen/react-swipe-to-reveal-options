@@ -4,6 +4,19 @@ import Hammer from 'react-hammerjs';
 
 import '../../css/swipe-to-reveal-options.css';
 
+const hammerOptions = {
+	touchAction: 'pan-y',
+	cssProps: {
+		userSelect: ''
+	},
+	recognizers: {
+		pan: {},
+		tap: {
+			time: 600,
+			threshold: 100
+		}
+	}
+};
 export default class Swipeable extends Component {
 	constructor(props) {
 		super(props);
@@ -36,14 +49,14 @@ export default class Swipeable extends Component {
 	}
 
 	calculatePos(e) {
-		var x = e.changedTouches[0].clientX;
-		var y = e.changedTouches[0].clientY;
+		const x = e.changedTouches[0].clientX;
+		const y = e.changedTouches[0].clientY;
 
-		var xd = this.state.x - x;
-		var yd = this.state.y - y;
+		const xd = this.state.x - x;
+		const yd = this.state.y - y;
 
-		var axd = Math.abs(xd);
-		var ayd = Math.abs(yd);
+		const axd = Math.abs(xd);
+		const ayd = Math.abs(yd);
 
 		return {
 			deltaX: xd,
@@ -52,6 +65,7 @@ export default class Swipeable extends Component {
 			absY: ayd
 		};
 	}
+
 	handlePanStart(e) {
 		this.setState({
 			start: Date.now(),
@@ -60,6 +74,7 @@ export default class Swipeable extends Component {
 			swiping: false
 		});
 	}
+
 	touchStart(e) {
 		if (e.touches.length > 1) {
 			return;
@@ -78,14 +93,14 @@ export default class Swipeable extends Component {
 	}
 
 	calculatePointers(e) {
-		var x = e.changedPointers[0].clientX;
-		var y = e.changedPointers[0].clientY;
+		const x = e.changedPointers[0].clientX;
+		const y = e.changedPointers[0].clientY;
 
-		var xd = this.state.x - x;
-		var yd = this.state.y - y;
+		const xd = this.state.x - x;
+		const yd = this.state.y - y;
 
-		var axd = Math.abs(xd);
-		var ayd = Math.abs(yd);
+		const axd = Math.abs(xd);
+		const ayd = Math.abs(yd);
 
 		return {
 			deltaX: xd,
@@ -94,13 +109,14 @@ export default class Swipeable extends Component {
 			absY: ayd
 		};
 	}
+
 	handlePan(e) {
 		const { x, y } = this.state;
 		const { delta, onSwipingLeft, onSwipingRight, onSwipingUp, onSwipingDown } = this.props;
 
 		if (!x || !y || e.pointers.length > 1) return;
 
-		var cancelPageSwipe = false;
+		let cancelPageSwipe = false;
 
 		const { absX, absY, deltaX, deltaY } = this.calculatePointers(e);
 
@@ -118,25 +134,19 @@ export default class Swipeable extends Component {
 					onSwipingLeft(e, absX);
 					cancelPageSwipe = true;
 				}
-			} else {
-				if (onSwipingRight) {
+			} else if (onSwipingRight) {
 					onSwipingRight(e, absX);
 					cancelPageSwipe = true;
 				}
-			}
-		} else {
-			if (deltaY > 0) {
+		} else if (deltaY > 0) {
 				if (onSwipingUp) {
 					onSwipingUp(e, absY);
 					cancelPageSwipe = true;
 				}
-			} else {
-				if (onSwipingDown) {
+			} else if (onSwipingDown) {
 					onSwipingDown(e, absY);
 					cancelPageSwipe = true;
 				}
-			}
-		}
 
 		this.setState({ swiping: true });
 
@@ -153,7 +163,7 @@ export default class Swipeable extends Component {
 			return;
 		}
 
-		var cancelPageSwipe = false;
+		let cancelPageSwipe = false;
 		const { absX, absY, deltaX, deltaY } = this.calculatePos(e);
 
 		if (absX < delta && absY < delta) {
@@ -166,25 +176,19 @@ export default class Swipeable extends Component {
 					onSwipingLeft(e, absX);
 					cancelPageSwipe = true;
 				}
-			} else {
-				if (onSwipingRight) {
+			} else if (onSwipingRight) {
 					onSwipingRight(e, absX);
 					cancelPageSwipe = true;
 				}
-			}
-		} else {
-			if (deltaY > 0) {
+		} else if (deltaY > 0) {
 				if (onSwipingUp) {
 					onSwipingUp(e, absY);
 					cancelPageSwipe = true;
 				}
-			} else {
-				if (onSwipingDown) {
+			} else if (onSwipingDown) {
 					onSwipingDown(e, absY);
 					cancelPageSwipe = true;
 				}
-			}
-		}
 
 		this.setState({ swiping: true });
 
@@ -203,11 +207,11 @@ export default class Swipeable extends Component {
 		const { flickThreshold, onSwiped, onSwipedLeft, onSwipedRight, onSwipedUp, onSwipedDown } = this.props;
 
 		if (swiping) {
-			var { absX, absY, deltaX, deltaY } = this.calculatePointers(ev);
+			const { absX, absY, deltaX, deltaY } = this.calculatePointers(ev);
 
-			var time = Date.now() - start;
-			var velocity = Math.sqrt(absX * absX + absY * absY) / time;
-			var isFlick = velocity > flickThreshold;
+			const time = Date.now() - start;
+			const velocity = Math.sqrt(absX * absX + absY * absY) / time;
+			const isFlick = velocity > flickThreshold;
 
 			onSwiped && onSwiped(ev, deltaX, deltaY, isFlick);
 
@@ -217,26 +221,25 @@ export default class Swipeable extends Component {
 				} else {
 					onSwipedRight && onSwipedRight(ev, deltaX);
 				}
-			} else {
-				if (deltaY > 0) {
+			} else if (deltaY > 0) {
 					onSwipedUp && onSwipedUp(ev, deltaY);
 				} else {
 					onSwipedDown && onSwipedDown(ev, deltaY);
 				}
-			}
 		}
 
 		this.setState(this.getInitialState());
 	}
+
 	touchEnd(ev) {
 		const { swiping, start } = this.state;
 		const { flickThreshold, onSwiped, onSwipedLeft, onSwipedRight, onSwipedUp, onSwipedDown } = this.props;
 		if (swiping) {
-			var pos = this.calculatePos(ev);
+			const pos = this.calculatePos(ev);
 
-			var time = Date.now() - start;
-			var velocity = Math.sqrt(pos.absX * pos.absX + pos.absY * pos.absY) / time;
-			var isFlick = velocity > flickThreshold;
+			const time = Date.now() - start;
+			const velocity = Math.sqrt(pos.absX * pos.absX + pos.absY * pos.absY) / time;
+			const isFlick = velocity > flickThreshold;
 
 			onSwiped && onSwiped(ev, pos.deltaX, pos.deltaY, isFlick);
 
@@ -246,20 +249,18 @@ export default class Swipeable extends Component {
 				} else {
 					onSwipedRight && onSwipedRight(ev, pos.deltaX);
 				}
-			} else {
-				if (pos.deltaY > 0) {
+			} else if (pos.deltaY > 0) {
 					onSwipedUp && onSwipedUp(ev, pos.deltaY);
 				} else {
 					onSwipedDown && onSwipedDown(ev, pos.deltaY);
 				}
-			}
 		}
 
 		this.setState(this.getInitialState());
 	}
 
 	render() {
-		var props = Object.assign({}, this.props, {
+		const props = Object.assign({}, this.props, {
 			onPanMove: this.handlePanMove,
 			onPanStart: this.handlePanStart,
 			onPanLeft: this.handlePanMove,
@@ -269,7 +270,7 @@ export default class Swipeable extends Component {
 			onTouchEnd: this.touchEnd
 		});
 
-		var customPropNames = [
+		const customPropNames = [
 			'onSwiped',
 			'onSwipingUp',
 			'onSwipingRight',
@@ -285,7 +286,7 @@ export default class Swipeable extends Component {
 			'onPanRight',
 			'delta'
 		];
-		for (let name of customPropNames) {
+		for (const name of customPropNames) {
 			delete props[name];
 		}
 
@@ -302,7 +303,7 @@ export default class Swipeable extends Component {
 
 		return (
 			<Hammer
-				options={options}
+				options={hammerOptions}
 				onSwipe={this.handleSwipe}
 				onSwipeLeft={this.onSwipeLeft}
 				onSwipeRight={this.onSwipeRight}
@@ -318,17 +319,17 @@ export default class Swipeable extends Component {
 }
 
 Swipeable.propTypes = {
+	delta: PropTypes.number,
+	flickThreshold: PropTypes.number,
 	onSwiped: PropTypes.func,
-	onSwipingUp: PropTypes.func,
-	onSwipingRight: PropTypes.func,
-	onSwipingDown: PropTypes.func,
-	onSwipingLeft: PropTypes.func,
-	onSwipedUp: PropTypes.func,
-	onSwipedRight: PropTypes.func,
 	onSwipedDown: PropTypes.func,
 	onSwipedLeft: PropTypes.func,
-	flickThreshold: PropTypes.number,
-	delta: PropTypes.number
+	onSwipedRight: PropTypes.func,
+	onSwipedUp: PropTypes.func,
+	onSwipingDown: PropTypes.func,
+	onSwipingLeft: PropTypes.func,
+	onSwipingRight: PropTypes.func,
+	onSwipingUp: PropTypes.func
 };
 Swipeable.defaultProps = {
 	flickThreshold: 0.6,
