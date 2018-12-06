@@ -1,13 +1,13 @@
 {
   "name": "react-swipe-to-reveal-options2",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Simple react.js component for a swipe-to-reveal-option item. Ported from https://github.com/enkidevs/react-swipe-to-reveal-options fro ES6",
   "main": "./lib/index.js",
   "peerDependencies": {
     "react": "^16.5.2 || 0.x"
   },
   "scripts": {
-    "copycss":"copyfiles -f css/*.css lib",
+    "copycss": "copyfiles -f css/*.css lib",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "npm-run-all clean lint build:es2015 build:es copycss",
