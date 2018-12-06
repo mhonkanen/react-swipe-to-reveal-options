@@ -7,9 +7,10 @@
     "react": "^16.5.2 || 0.x"
   },
   "scripts": {
+    "copycss":"copyfiles -f css/*.css lib",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "npm-run-all clean lint build:es2015 build:es",
+    "build": "npm-run-all clean lint build:es2015 build:es copycss",
     "build:shared": "cross-env BABEL_ENV=docs-development babel-node ./packages/shared/src",
     "build:es2015": "cross-env NODE_ENV=production babel ./src --out-dir ./lib",
     "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=modules babel ./src/index.jsx --out-file ./build/index.es.js",
@@ -70,6 +71,7 @@
     "babel-plugin-transform-dev-warning": "^0.1.0",
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
+    "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.0.0",
     "eslint-config-airbnb": "^17.0.0",
