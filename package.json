@@ -4,7 +4,7 @@
   "description": "Simple react.js component for a swipe-to-reveal-option item. Ported from https://github.com/enkidevs/react-swipe-to-reveal-options fro ES6",
   "main": "./lib/index.js",
   "peerDependencies": {
-    "react": "^16.5.2 || 0.x"
+    "react": "^16.8.0"
   },
   "scripts": {
     "copycss": "copyfiles  css/*.css lib",
@@ -42,7 +42,8 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "webpack": "^4.39.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
