@@ -1,6 +1,6 @@
-import './css/swipe-to-reveal-options.css';
+import './index.css'
 
-export { default as LeftRightButton } from './components/LeftRightButton';
-export { default as Swipeable } from './components/Swipeable';
-export { default as SwipeToRevealList } from './components/SwipeToRevealList';
-export { default as SwipeToRevealOptions } from './components/SwipeToRevealOptions';
+export { default as LeftRightButton } from './LeftRightButton.jsx'
+export { default as Swipeable } from './Swipeable.jsx'
+export { default as SwipeToRevealList } from './SwipeToRevealList.jsx'
+export { default as SwipeToRevealOptions } from './SwipeToRevealOptions.jsx'

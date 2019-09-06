@@ -1,3 +1,38 @@
+body {
+  background: #bebfbf;
+  color: #0099cc;
+  font-family: sans-serif;
+  overflow-x: hidden; }
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.stro-content {
+  background: #eeefef;
+  padding-left: 2em;
+  line-height: 65px;
+  border-bottom: 1px solid #aaa; }
+
+#root {
+  overflow-x: hidden; }
+
+.complete {
+  color: #fff;
+  background: #3498db; }
+
+.archive {
+  color: #fff;
+  background: #3498db;
+  background: #e67e22; }
+
+.undo {
+  color: #fff;
+  background: #c0392b; }
+
 .stro-container {
   width: 300%;
   margin-left: -100%;
@@ -52,3 +87,31 @@
 .stro-container.show-right-buttons .stro-button,
 .stro-container.show-left-buttons .stro-button {
   transition: all 0.3s ease; }
+
+.stro-content {
+  background: #eeefef;
+  padding-left: 2em;
+  line-height: 65px;
+  border-bottom: 1px solid #aaa; }
+
+.move {
+  color: #fff;
+  background: #3498db; }
+
+.archive {
+  color: #fff;
+  background: #e67e22; }
+
+.trash {
+  color: #fff;
+  background: #c0392b; }
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+#react-content {
+  overflow-x: hidden; }

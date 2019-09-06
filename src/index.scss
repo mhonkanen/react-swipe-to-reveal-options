@@ -1,0 +1,142 @@
+$trash-color: #c0392b;
+$undo-color: yellow;
+$white: #fff;
+$bodyBG: #bebfbf;
+$bodyFG: #0099cc;
+$complete-color: #3498db;
+$archive-color: #e67e22;
+
+$container-color: #eeefef;
+$border-bottom-color: #aaa;
+$border-bottom: 1px solid $border-bottom-color;
+body {
+	// margin: 0;
+	// padding: 0;
+	background: $bodyBG;
+
+	color: $bodyFG;
+	font-family: sans-serif;
+	overflow-x: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.stro-content {
+	background: $container-color;
+	padding-left: 2em;
+	line-height: 65px;
+	border-bottom: $border-bottom;
+}
+
+#root {
+	overflow-x: hidden;
+}
+
+@mixin basic-item {
+	color: $white;
+	background: $complete-color;
+}
+.complete {
+	@include basic-item;
+}
+.archive {
+	@include basic-item;
+
+	background: $archive-color;
+}
+.undo {
+	color: $white;
+	background: $trash-color;
+}
+
+.stro-container {
+	width: 300%;
+	margin-left: -100%;
+	position: relative;
+	height: 65px;
+
+	.transition-back {
+		transition: all 0.4s ease;
+	}
+}
+
+.stro-left,
+.stro-content,
+.stro-right {
+	position: relative;
+	display: inline-block;
+	width: 33.33333333%;
+	height: 100%;
+	vertical-align: top;
+}
+
+.stro-button {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	color: $white;
+	span {
+		color: $white;
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		display: block;
+	}
+
+	.stro-right-button {
+		left: 0;
+		color: $white;
+		span {
+			left: 0;
+			text-align: center;
+			color: $white;
+		}
+	}
+
+	.stro-left-button {
+		right: 0;
+		span {
+			right: 0;
+			text-align: center;
+			color: $white;
+		}
+	}
+}
+
+.stro-container.show-right-buttons,
+.stro-container.show-left-buttons,
+.stro-container.show-right-buttons .stro-button,
+.stro-container.show-left-buttons .stro-button {
+	transition: all 0.3s ease;
+}
+.stro-content {
+	background: $container-color;
+	padding-left: 2em;
+	line-height: 65px;
+	border-bottom: $border-bottom;
+}
+
+.move {
+	color: $white;
+	background: $complete-color;
+}
+
+.archive {
+	color: $white;
+	background: $archive-color;
+}
+
+.trash {
+	color: $white;
+	background: $trash-color;
+}
+
+#react-content {
+	overflow-x: hidden;
+}

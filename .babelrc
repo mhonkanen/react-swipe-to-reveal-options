@@ -1,9 +1,13 @@
-{
-    "presets": [
-        "env"
-    ],
-    "plugins": [
-        "transform-object-rest-spread",
-        "transform-react-jsx"
-    ]
+{"sourceMaps": "inline",
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "external-helpers"
+   
+  ]
 }
