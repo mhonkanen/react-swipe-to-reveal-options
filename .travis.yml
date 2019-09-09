@@ -8,7 +8,6 @@ node_js:
 script: echo "Running tests against $(node -v) ..." 
 jobs:
  include:
-    - script: echo "Running unit tests (1)"
     - script: echo "Running unit tests (2)"
     - stage: GitHub Release
       script: echo "Deploying to github ..."
