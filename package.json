@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-to-reveal-options2",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Simple react.js component for a swipe-to-reveal-option item. Ported from https://github.com/enkidevs/react-swipe-to-reveal-options fro ES6",
   "author": {
     "name": "Charles Berman",
@@ -26,7 +26,7 @@
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "build": "npm-run-all build-css build-rollup",
-    "build-rollup":"rollup -c",
+    "build-rollup": "rollup -c",
     "rollup:start": "rollup -c -w",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build"
