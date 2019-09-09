@@ -71,5 +71,9 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "global": "^4.4.0",
+    "travis-cli": "^1.0.9"
+  }
 }

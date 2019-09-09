@@ -2,3 +2,8 @@ language: node_js
 node_js:
   - 9
   - 8
+deploy:
+  provider: npm
+  email: "Charles.Heath.Berman@gmail.com"
+  api_key: "e32f4ab6-c84d-4984-8e28-eb8bc3684120"
+  
