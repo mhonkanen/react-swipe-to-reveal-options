@@ -9,6 +9,7 @@ script: echo "Running tests against $(node -v) ..."
 jobs:
  include:
     - script: echo "Running unit tests (2)"
+    - script: npm run build
     - stage: GitHub Release
       script: echo "Deploying to github ..."
       deploy:
@@ -21,9 +22,7 @@ jobs:
       script: echo "Deploying to npm ..."
       deploy:
         provider: npm
-        api_key: "$NPM_API_KEY"
-      email: "Charles.Heath.Berman@gmail.com"
-      on: deploy-npm-release
+        api_key: "$NPM_API_KEY" 
 notifications:
   email:
     on_success: always
