@@ -8,3 +8,5 @@ deploy:
   api_key: "e32f4ab6-c84d-4984-8e28-eb8bc3684120"
   on:
     tags: true
+    all_branches: true
+    tag: next
