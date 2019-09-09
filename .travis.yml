@@ -12,7 +12,7 @@ jobs:
     - script: echo "Running unit tests (1)"
     - script: echo "Running unit tests (2)"
     - stage: GitHub Release
-      script: skip
+      script: echo "Deploying to github ..."
       deploy:
         provider: releases
         api_key: "$GITHUB_API_KEY"
