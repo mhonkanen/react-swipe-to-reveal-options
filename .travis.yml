@@ -2,8 +2,31 @@ language: node_js
 node_js:
   - 9
   - 8
+  - 7
+script: echo "Running tests against $(node -v) ..."
+
 deploy:
   provider: npm
   email: "Charles.Heath.Berman@gmail.com"
   api_key: "e32f4ab6-c84d-4984-8e28-eb8bc3684120"
-  
+
+jobs:
+ include:
+    - script: echo "Running unit tests (1)"
+    - script: echo "Running unit tests (2)"
+    - stage: GitHub Release
+      script: echo "Deploying to GitHub releases ..."
+      deploy:
+        provider: releases
+        api_key: a9bb5e70ae4144802f0041e925ec861114b76a70"
+        skip_cleanup: true
+        on:
+          tags: true
+  include:
+    - stage: npm release
+      node_js: "7"
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: npm
+        api_key: "e32f4ab6-c84d-4984-8e28-eb8bc3684120"
+        on: deploy-npm-release
