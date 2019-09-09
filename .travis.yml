@@ -5,10 +5,7 @@ node_js:
   - 7
 script: echo "Running tests against $(node -v) ..."
 
-deploy:
-  provider: npm
-  email: "Charles.Heath.Berman@gmail.com"
-  api_key: "e32f4ab6-c84d-4984-8e28-eb8bc3684120"
+
 
 jobs:
  include:
@@ -21,12 +18,12 @@ jobs:
         api_key: a9bb5e70ae4144802f0041e925ec861114b76a70"
         skip_cleanup: true
         on:
-          tags: true
-  include:
+          tags: true  
     - stage: npm release
       node_js: "7"
       script: echo "Deploying to npm ..."
       deploy:
         provider: npm
         api_key: "e32f4ab6-c84d-4984-8e28-eb8bc3684120"
+      email: "Charles.Heath.Berman@gmail.com"
         on: deploy-npm-release
