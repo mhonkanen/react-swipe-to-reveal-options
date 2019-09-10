@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SwipeToRevealOptions from './SwipeToRevealOptions.jsx'
-import { SwipeToRevealListItemPropType } from './Props';
+import { SwipeToRevealListItemPropType } from './Props.jsx';
 
 import './index.css'
 const SwipeToRevealList = ({ items, width }) => (
@@ -28,8 +28,8 @@ SwipeToRevealList.defaultProps = {
 	width: window.innerWidth
 }
 SwipeToRevealList.propTypes = {
-	width: PropTypes.number.isRequired,
-	items: PropTypes.arrayOf(SwipeToRevealListItemPropType)
+	items: PropTypes.arrayOf(SwipeToRevealListItemPropType),
+	width: PropTypes.number.isRequired
 }
 
 export default SwipeToRevealList
