@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-to-reveal-options2",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Simple react.js component for a swipe-to-reveal-option item. Ported from https://github.com/enkidevs/react-swipe-to-reveal-options fro ES6",
   "author": {
     "name": "Charles Berman",
