@@ -2,11 +2,15 @@
 
 [![Build Status](https://travis-ci.org/mookiejones/react-swipe-to-reveal-options.svg?branch=master)](https://travis-ci.org/mookiejones/react-swipe-to-reveal-options)  
 [![NPM](https://img.shields.io/npm/v/react-swipe-to-reveal-options2.svg)](https://www.npmjs.com/package/react-swipe-to-reveal-options2)  
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)  
+
+[![npm](https://img.shields.io/npm/dt/react-swipe-to-reveal-options2.svg)](https://www.npmjs.com/package/react-swipe-to-reveal-options2)
+
+
 
 > Description
 
-## Table of Contents
+## Table of Contents  
+
 - [Installation](#Installation)
 - [Components](#components)
   - [Swipeable](#swipeable)
@@ -16,7 +20,6 @@
 - [Example](#example)
 
 ## Installation
-
 ```bash
 npm install --save react-swipe-to-reveal-options2
 
@@ -27,6 +30,46 @@ yarn add react-swipe-to-reveal-option2
 ```
 
 ## Components
+
+### SwipeToRevealList  
+The SwipeToRevealList is a single component to provide a list of swipeable items.
+**Example**  
+
+```jsx  
+const items = [
+      {
+        leftOptions: [{
+          label: 'Trash',
+          class: 'trash'
+        }],
+        rightOptions: [{
+          label: 'Move',
+          class: 'move',
+        },{
+          label: 'Archive',
+          class: 'archive',
+        }],
+        content: "Mail from Mathieu",
+        callActionWhenSwipingFarLeft: true,
+        callActionWhenSwipingFarRight: true
+      },
+];
+
+const Example=()=>(
+<SwipeToRevealList items={items} width={window.innerWidth}>
+)
+
+
+```  
+#### PropTypes
+
+|Name|Type|Default|Description|
+| ------------- |:-------------:| -----:|-----:|
+|width|Number|window.InnerWidth|Width of list *required*|
+|items|Array|[]|Array of SwipePropType
+---
+
+
 ### Swipeable
 ```jsx
 <Swipeable>
@@ -50,17 +93,15 @@ yarn add react-swipe-to-reveal-option2
 ---
 
 ### SwipeItem  
-### SwipeToRevealList
-```jsx  
-<SwipeToRevealList>
-```  
-#### PropTypes
 
 |Name|Type|Default|Description|
 | ------------- |:-------------:| -----:|-----:|
-|width|Number|window.InnerWidth|Width of list *required*|
-|items|Array|[]|Array of SwipePropType
----
+|disabled|Boolean|false|Disables item|
+|onDoubleClick|func|()=>{})|Action on double click|
+|onSingleTap|func|()=>{})|Action on single click|
+|threshold|Number|45|Threshold|
+
+
 
 #### OptionType
 
@@ -69,7 +110,8 @@ yarn add react-swipe-to-reveal-option2
 |label|String|''|label|
 |class|String|''|label|
 
-#### SwipeItemPropType
+#### SwipeItemPropType  
+
 |Name|Type|Default|Description|
 | ------------- |:-------------:| -----:|-----:|
 |leftOptions|Array of OptionType|[]||
