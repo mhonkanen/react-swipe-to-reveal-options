@@ -3,7 +3,7 @@ import Hammer from 'react-hammerjs'
 import PropTypes from 'prop-types'
 import './index.css'
 
-const SwipeItem = ({ disabled, threshold, onSingleTap, onDoubleTap }) => {
+const SwipeItem = ({ disabled, threshold, onSingleTap, onDoubleTap ,onTap}) => {
 	const [state, toggleState] = useState({
 		hammer: null,
 		startLeft: 0,

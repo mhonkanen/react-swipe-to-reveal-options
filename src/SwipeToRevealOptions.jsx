@@ -345,6 +345,7 @@ class SwipeToRevealOptions extends Component {
 	 */
 	leftClick = option => {
 		const { onLeftClick, transitionBackOnLeftClick } = this.props
+		debugger;
 		onLeftClick(option)
 		if (transitionBackOnLeftClick) this.transitionBack()
 	};
@@ -392,7 +393,7 @@ class SwipeToRevealOptions extends Component {
   <div className={classes} style={containerStyle}>
     <div className='stro-left'>
       {leftOptions.map((option, index) => {
-						const key = `left-${index}`
+						const key = `left-${index}`						
 						return (
   <LeftRightButton
     key={key}
@@ -400,7 +401,7 @@ class SwipeToRevealOptions extends Component {
     index={index}
     getStyle={this.getStyle}
     option={option}
-    handleClick={this.leftClick}
+	handleClick={this.leftClick}
 							/>
 						)
 					})}

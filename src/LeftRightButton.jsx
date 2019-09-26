@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 const LeftRightButton = ({ side, option, index, handleClick, getSpanStyle, getStyle }) => {
 	const propsLabel = { style: getSpanStyle(side, index) }
-	const labelType = typeof option.label
+	const labelType = typeof option.label;
 	console.log(`labelType: ${labelType}`)
 	if (labelType === 'string') {
 		propsLabel.dangerouslySetInnerHTML = {
@@ -19,7 +19,13 @@ const LeftRightButton = ({ side, option, index, handleClick, getSpanStyle, getSt
   <div
     className={`stro-button stro-${side}-button ${option.class}`}
     key={key}
-    onClick={e => handleClick(e, option)}
+	onClick={e => 	{ 
+		handleClick(e, option);
+
+		if (option.handleClick)
+			option.handleClick(e,option);	
+		}
+	}
     style={getStyle(side, index)}
 		>
     <span style={propsLabel.style}>{getLabel()}</span>
